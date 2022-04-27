@@ -2,7 +2,7 @@ const Product = require('../models/Product');
 
 const getProductList = async() => {
     try{
-        return Product.getProductList();
+        return await Product.getProductList();
     } catch(e) {
         throw new Error(e.message);
     }
@@ -10,7 +10,23 @@ const getProductList = async() => {
 
 const createProduct = async(name) => {
     try{
-        return Product.createProduct(name);
+        return await Product.createProduct(name);
+    } catch(e) {
+        throw new Error(e.message);
+    }
+}
+
+const updateProduct = async(object_id, payload) => {
+    try{
+        return await Product.updateProduct(object_id, payload);
+    } catch(e) {
+        throw new Error(e.message);
+    }
+}
+
+const getProduct = async(object_id) => {
+    try{
+        return await Product.getProduct(object_id);
     } catch(e) {
         throw new Error(e.message);
     }
@@ -18,5 +34,7 @@ const createProduct = async(name) => {
 
 module.exports = {
     getProductList,
-    createProduct
+    createProduct,
+    updateProduct,
+    getProduct
 }

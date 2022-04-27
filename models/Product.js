@@ -41,7 +41,17 @@ const getProductList = async() => {
     return await Product.find({});
 }
 
+const updateProduct = async(object_id, payload) => {
+    return await Product.findByIdAndUpdate(object_id, { $set: payload });
+}
+
+const getProduct = async(object_id) => {
+    return await Product.findById(object_id);
+}
+
 module.exports = {
     getProductList,
-    createProduct
+    createProduct,
+    updateProduct,
+    getProduct
 }
