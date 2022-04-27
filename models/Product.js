@@ -46,7 +46,8 @@ const updateProduct = async(object_id, payload) => {
 }
 
 const getProduct = async(object_id) => {
-    return await Product.findById(object_id);
+    return await Product.findById(object_id)
+
 }
 
 module.exports = {

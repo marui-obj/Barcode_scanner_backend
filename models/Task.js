@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const TaskSchema = Schema({
     product_list: [{
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Product',
         required: true
     }],
@@ -21,3 +21,15 @@ const TaskSchema = Schema({
     driver_name: String,
     license_plate: String
 });
+
+const Task = mongoose.model('Task', TaskSchema);
+
+const getTaskList = async() => {
+    // Return task that have Pending status
+    return await Task.find({})
+    .populate({path: 'product_list'});
+}
+
+module.exports = {
+    getTaskList
+}

@@ -6,6 +6,7 @@ const config = require('./configs');
 
 const indexRoutes = require('./routes/index.routes');
 const productRoutes = require('./routes/product.routes');
+const taskRoutes = require('./routes/task.routes');
 
 mongoose.connect(`${config.mongo.uri}${config.mongo.db}`)
 .then(() => console.log('MongoDB Connected'))
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use('/', indexRoutes);
 app.use('/products', productRoutes);
+app.use('/tasks', taskRoutes);
 
 const port = config.port;
 
