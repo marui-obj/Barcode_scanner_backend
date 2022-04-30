@@ -31,6 +31,15 @@ const getTaskList = async() => {
     .populate({path: 'product_list'});
 }
 
+const getTaskDetail = async(id) => {
+    const result =  await Task.find({})
+    .where("_id").equals(id)
+    .populate({path: 'product_list'})
+    .select({"_id": 0, "product_list": 1})
+
+    return await result[0].product_list;
+}
 module.exports = {
-    getTaskList
+    getTaskList,
+    getTaskDetail
 }

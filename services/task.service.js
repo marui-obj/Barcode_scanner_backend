@@ -8,6 +8,15 @@ const getTaskList = async() => {
     }
 }
 
+const getTaskDetail = async(id) => {
+    try{
+        return await Task.getTaskDetail(id);
+    } catch(e) {
+        throw new Error(e);
+    }
+}
+
 module.exports = {
-    getTaskList
+    getTaskList,
+    getTaskDetail
 }

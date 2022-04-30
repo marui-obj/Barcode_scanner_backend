@@ -11,6 +11,18 @@ const getTaskList = async(req, res, next) => {
     }
 }
 
+const getTaskDetail = async(req, res, next) => {
+    const { id } = req.params;
+    try{
+        const result = await taskService.getTaskDetail(id);
+        res.status(200).send(result);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500) && next(e);
+    }
+}
+
 module.exports = {
-    getTaskList
+    getTaskList,
+    getTaskDetail
 }
