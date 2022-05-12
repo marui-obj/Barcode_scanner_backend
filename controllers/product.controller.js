@@ -7,6 +7,12 @@ const filterPostProduct = async(req, res, next) => {
     else next();
 }
 
+const filterGetProduct = async(req, res, next) => {
+    const { id } = req.params;
+    if (await productService.isIdValidate(id)) next();
+    else res.status(400).json({message: "Invalid object id"});
+}
+
 
 const getProductList = async(req, res, next) => {
     try{
@@ -58,4 +64,5 @@ module.exports = {
     postProduct,
     putProduct,
     filterPostProduct,
+    filterGetProduct
 }
