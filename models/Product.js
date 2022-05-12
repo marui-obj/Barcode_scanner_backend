@@ -50,9 +50,14 @@ const getProduct = async(object_id) => {
 
 }
 
+const isIdValidate = async(id) => {
+    return mongoose.Types.ObjectId.isValid(id);
+}
+
 module.exports = {
     getProductList,
     createProduct,
     updateProduct,
-    getProduct
+    getProduct,
+    isIdValidate
 }
