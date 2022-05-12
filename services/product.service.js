@@ -32,9 +32,18 @@ const getProduct = async(object_id) => {
     }
 }
 
+const isIdValidate = async(id) => {
+    try{
+        return await Product.isIdValidate(id);
+    } catch(e) {
+        throw new Error(e.message);
+    }
+}
+
 module.exports = {
     getProductList,
     createProduct,
     updateProduct,
-    getProduct
+    getProduct,
+    isIdValidate
 }
