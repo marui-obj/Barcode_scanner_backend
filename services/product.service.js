@@ -16,6 +16,16 @@ const createProduct = async(name) => {
     }
 }
 
+const createProducts = async(name, amount) => {
+    var array_obj = [];
+    try{
+        for(var i=0; i<amount; i++) array_obj.push({name: name});
+        return await Product.createProducts(array_obj);
+    } catch(e) {
+        throw new Error(e.message);
+    }
+}
+
 const updateProduct = async(object_id, payload) => {
     try{
         return await Product.updateProduct(object_id, payload);
@@ -43,6 +53,7 @@ const isIdValidate = async(id) => {
 module.exports = {
     getProductList,
     createProduct,
+    createProducts,
     updateProduct,
     getProduct,
     isIdValidate

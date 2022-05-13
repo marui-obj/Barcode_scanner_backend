@@ -37,6 +37,10 @@ const createProduct = async(name) => {
     return await Product.create(newProduct);
 }
 
+const createProducts = async(doc) => {
+    return await Product.insertMany(doc);
+}
+
 const getProductList = async() => {
     return await Product.find({});
 }
@@ -57,6 +61,7 @@ const isIdValidate = async(id) => {
 module.exports = {
     getProductList,
     createProduct,
+    createProducts,
     updateProduct,
     getProduct,
     isIdValidate

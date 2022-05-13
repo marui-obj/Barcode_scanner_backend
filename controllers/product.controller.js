@@ -35,6 +35,19 @@ const postProduct = async(req, res, next) => {
     }
 }
 
+const postProducts = async(req, res, next) => {
+    const { amount } = req.params;
+    const { name } = req.body;
+    try{
+        await productService.createProducts(name, amount);
+        res.sendStatus(201);
+    } catch(e) {
+        console.log(e.message);
+        res.sendStatus(500) && next(e);
+    }
+
+}
+
 const putProduct = async(req, res, next) => {
     const payload = req.body
     const { id } = req.params;
@@ -62,6 +75,7 @@ module.exports = {
     getProductList,
     getProduct,
     postProduct,
+    postProducts,
     putProduct,
     filterPostProduct,
     filterGetProduct

@@ -4,10 +4,12 @@ const productController = require('../controllers/product.controller');
 
 router.get('/', productController.getProductList);
 
-router.post('/', productController.filterPostProduct ,productController.postProduct);
+router.post('/', productController.filterPostProduct, productController.postProduct);
 
 router.put('/:id', productController.putProduct);
 
 router.get('/:id', productController.filterGetProduct, productController.getProduct);
+
+router.post('/:amount', productController.filterPostProduct, productController.postProducts);
 
 module.exports = router;
