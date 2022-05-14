@@ -18,8 +18,7 @@ const ProductSchema = Schema({
     },
     received_date: {
         type: Date,
-        required: true,
-        default: Date.now
+        default: null
     },
     dispatched_date: {
         type: Date,
