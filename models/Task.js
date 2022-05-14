@@ -1,3 +1,4 @@
+const { query } = require('express');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -39,7 +40,33 @@ const getTaskDetail = async(id) => {
 
     return await result[0].product_list;
 }
+
+const removeProductFromTask = async(id) => {
+    const query = {
+        product_list: id
+    }
+    const update = {
+        "$pull": {product_list: id}
+    }
+    return await Task.findOneAndUpdate(query, update, {new: true});
+    
+}
+
+const updateTask = async(id, update) => {
+    return await Task.findOneAndUpdate(id, { $set: update }, {new: true})
+}
+
+const findTaskFromProduct = async(id) => {
+    const query = {
+        product_list: id
+    }
+    return await Task.findOne(query);
+}
+
 module.exports = {
     getTaskList,
-    getTaskDetail
+    getTaskDetail,
+    removeProductFromTask,
+    updateTask,
+    findTaskFromProduct
 }

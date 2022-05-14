@@ -22,7 +22,19 @@ const getTaskDetail = async(req, res, next) => {
     }
 }
 
+const putDispatchTask = async(req, res, next) => {
+    const { id } = req.params
+    try{
+        const result = await taskService.setProductDispatchAndRemoveInTask(id);
+        res.sendStatus(200).send(result);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500) && next(e);
+    }
+}
+
 module.exports = {
     getTaskList,
-    getTaskDetail
+    getTaskDetail,
+    putDispatchTask
 }

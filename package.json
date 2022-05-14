@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "prod": "cross-env NODE_ENV=product node app.js",
-    "test": "cross-env NODE_ENV=test node app.js"
+    "test": "cross-env NODE_ENV=test nodemon app.js"
   },
   "author": "",
   "license": "ISC",
