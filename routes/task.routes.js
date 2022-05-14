@@ -7,4 +7,6 @@ router.get('/', TaskController.getTaskList);
 
 router.get('/:id', TaskController.getTaskDetail);
 
+router.put('/:id', TaskController.putDispatchTask); //product id
+
 module.exports = router
