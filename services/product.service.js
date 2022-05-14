@@ -34,6 +34,22 @@ const updateProduct = async(object_id, payload) => {
     }
 }
 
+const updateProductsByLocation = async(loc, payload) => {
+    try{
+        const option = payload.map((item) => {
+            return{
+                updateOne: {
+                    filter: { _id: item.id },
+                    update: { location: loc }
+                }
+            };
+        });
+        return await Product.updateBulk(option)
+    } catch(e) {
+        throw new Error(e.message);
+    }
+}
+
 const getProduct = async(object_id) => {
     try{
         return await Product.getProduct(object_id);
@@ -55,6 +71,7 @@ module.exports = {
     createProduct,
     createProducts,
     updateProduct,
+    updateProductsByLocation,
     getProduct,
     isIdValidate
 }

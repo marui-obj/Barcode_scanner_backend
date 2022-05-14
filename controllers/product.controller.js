@@ -60,6 +60,18 @@ const putProduct = async(req, res, next) => {
     }
 }
 
+const putProductByLocation = async(req, res, next) => {
+    const payload = req.body;
+    const { location } = req.params;
+    try{
+        await productService.updateProductsByLocation(location, payload);
+        res.sendStatus(200);
+    } catch(e) {
+        console.log(e.message);
+        res.sendStatus(500) && next(e);
+    }
+}
+
 const getProduct = async(req, res, next) => {
     const { id } = req.params;
     try{
@@ -77,6 +89,7 @@ module.exports = {
     postProduct,
     postProducts,
     putProduct,
+    putProductByLocation,
     filterPostProduct,
     filterGetProduct
 }

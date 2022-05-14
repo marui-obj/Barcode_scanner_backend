@@ -12,4 +12,6 @@ router.get('/:id', productController.filterGetProduct, productController.getProd
 
 router.post('/:amount', productController.filterPostProduct, productController.postProducts);
 
+router.put('/location/:location', productController.putProductByLocation);
+
 module.exports = router;

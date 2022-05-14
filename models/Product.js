@@ -58,11 +58,16 @@ const isIdValidate = async(id) => {
     return mongoose.Types.ObjectId.isValid(id);
 }
 
+const updateBulk = async(option) => {
+    return await Product.bulkWrite(option)
+} 
+
 module.exports = {
     getProductList,
     createProduct,
     createProducts,
     updateProduct,
+    updateBulk,
     getProduct,
     isIdValidate
 }
