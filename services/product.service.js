@@ -40,7 +40,11 @@ const updateProductsByLocation = async(loc, payload) => {
             return{
                 updateOne: {
                     filter: { _id: item.id },
-                    update: { location: loc }
+                    update: { 
+                                location: loc,
+                                status: "recieved",
+                                received_date: Date.now()
+                            }
                 }
             };
         });
