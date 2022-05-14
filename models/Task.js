@@ -29,13 +29,17 @@ const getTaskList = async() => {
     // Return task that have Pending status
     return await Task.find({})
     .where("task_status").equals("Pending")
-    .populate({path: 'product_list'});
+    .populate( { path: 'product_list',
+        match: { status: "received" } 
+    })
 }
 
 const getTaskDetail = async(id) => {
     const result =  await Task.find({})
     .where("_id").equals(id)
-    .populate({path: 'product_list'})
+    .populate( { path: 'product_list',
+        match: { status: "received" } 
+    })
     .select({"_id": 0, "product_list": 1})
 
     return await result[0].product_list;

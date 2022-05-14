@@ -34,7 +34,9 @@ const setProductDispatchAndRemoveInTask = async(id) => {
                 task_status: "Completed",
                 finished_date: Date.now(),
             }
-            await Task.updateTask(id, update);
+            return await Task.updateTask(id, update);
+        } else {
+            return 
         }
     } catch(e) {
         throw new Error(e);
