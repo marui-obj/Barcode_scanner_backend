@@ -1,4 +1,3 @@
-const { query } = require('express');
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -57,7 +56,7 @@ const removeProductFromTask = async(id) => {
 }
 
 const updateTask = async(id, update) => {
-    return await Task.findOneAndUpdate(id, { $set: update }, {new: true})
+    return await Task.findByIdAndUpdate(id, { $set: update }, {new: true})
 }
 
 const findTaskFromProduct = async(id) => {
