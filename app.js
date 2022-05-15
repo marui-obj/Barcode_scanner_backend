@@ -15,13 +15,8 @@ mongoose.connect(`${config.mongo.uri}${config.mongo.db}`)
 .catch(err => console.log(err)
     );
 
-if (process.env.NODE_ENV !== 'test_deploy'){
-    const corsOption = {
-        origin: 'http://localhost:3000',
-        credentials: true
-    }
-    app.use(cors(corsOption));
-}
+
+app.use(cors(corsOption));
 
 
 app.use(express.json());
