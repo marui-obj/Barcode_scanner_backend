@@ -16,7 +16,11 @@ mongoose.connect(`${config.mongo.uri}${config.mongo.db}`)
     );
 
 
+const corsOption = {
+    origin: true
+}
 app.use(cors(corsOption));
+
 
 
 app.use(express.json());
