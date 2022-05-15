@@ -9,17 +9,20 @@ const indexRoutes = require('./routes/index.routes');
 const productRoutes = require('./routes/product.routes');
 const taskRoutes = require('./routes/task.routes');
 
-const corsOption = {
-    origin: 'http://localhost:3000',
-    credentials: true
-}
 
 mongoose.connect(`${config.mongo.uri}${config.mongo.db}`)
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.log(err)
     );
 
-app.use(cors(corsOption));
+if (process.env.NODE_ENV !== 'test_deploy'){
+    const corsOption = {
+        origin: 'http://localhost:3000',
+        credentials: true
+    }
+    app.use(cors(corsOption));
+}
+
 
 app.use(express.json());
 
