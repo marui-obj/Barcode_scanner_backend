@@ -20,7 +20,6 @@ const getTaskDetail = async(id) => {
 const setProductDispatchAndRemoveInTask = async(id) => {
     try{
         const task = await Task.findTaskFromProduct(id);
-
         const update = {
             status: "dispatched",
             location: null,
@@ -34,7 +33,7 @@ const setProductDispatchAndRemoveInTask = async(id) => {
                 task_status: "Completed",
                 finished_date: Date.now(),
             }
-            return await Task.updateTask(id, update);
+            return await Task.updateTask(task.id, update);
         } else {
             return 
         }
