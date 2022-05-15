@@ -30,7 +30,7 @@ app.use('/', indexRoutes);
 app.use('/products', productRoutes);
 app.use('/tasks', taskRoutes);
 
-const port = config.port;
+const port = process.env.PORT || config.port;
 
 app.listen(port, () => console.log(`Start server at port ${port}`))
 
