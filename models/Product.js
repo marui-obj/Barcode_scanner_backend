@@ -9,8 +9,8 @@ const ProductSchema = Schema({
     },
     status: {
         type: String,
-        enum: ['received', 'dispatched', 'not recieved'],
-        default: 'not recieved'
+        enum: ['received', 'dispatched', 'non received'],
+        default: 'non received'
     },
     location: {
         type: String,
